@@ -21,9 +21,10 @@ const BaseButton = ({
     onClick,
     onMouseOn,
     children,
+    rotateDegree,
 }) => {
     return (
-        <button onMouseUp={onMouseOn} onClick={onClick} className={getButtonClassName(size, color)}>
+        <button onMouseUp={onMouseOn} onClick={onClick} className={getButtonClassName(size, color)} style={{ transform: `rotate(${rotateDegree}deg)` }}>
             {children}
         </button>
     );

@@ -4,7 +4,13 @@
 import {compose} from 'recompose';
 import BaseButton from './BaseButton';
 
+import withOnClickSetCount from '../hocs/withOnClickSetCount';
+import withSmallSize from '../hocs/withSmallSize';
+import withPrimaryColor from '../hocs/withPrimaryColor';
+
 
 export default compose(
-    //
+    withOnClickSetCount,
+    withSmallSize,
+    withPrimaryColor
 )(BaseButton)

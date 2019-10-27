@@ -19,6 +19,9 @@ const DescriptionList = () => (
 const HocsPlayground = () => {
     const [innerColor, setInnerColor] = useState('blue');
     const [outerColor, setOuterColor] = useState('red');
+    const [count, setCount] = useState(0);
+    const [backCount, setBackCount] = useState(5);
+    const [rotateDegree, setRotateDegree] = useState(0);
 
     return (
         <Fragment>
@@ -38,11 +41,18 @@ const HocsPlayground = () => {
                     Внешний в красный
                 </ButtonN2>
 
-                <ButtonN3 setOuterColor={setOuterColor} setInnerColor={setInnerColor}>Четные/нечетные клики</ButtonN3>
+                <ButtonN3 setOuterColor={setOuterColor} setInnerColor={setInnerColor} count={count} setCount={setCount}>
+                    {count} Четные/нечетные клики
+                </ButtonN3>
 
-                <ButtonN4 setOuterColor={setOuterColor} setInnerColor={setInnerColor}>Уходящий counter</ButtonN4>
+                {backCount}
+                <ButtonN4 setOuterColor={setOuterColor} setInnerColor={setInnerColor} backCount={backCount} setBackCount={setBackCount}>
+                    Уходящий counter
+                </ButtonN4>
 
-                <ButtonN5 setOuterColor={setOuterColor} setInnerColor={setInnerColor}>Крутящаяся кнопка</ButtonN5>
+                <ButtonN5 setOuterColor={setOuterColor} setInnerColor={setInnerColor} rotateDegree={rotateDegree} setRotateDegree={setRotateDegree}>
+                    Крутящаяся кнопка
+                </ButtonN5>
             </div>
         </Fragment>
     );
