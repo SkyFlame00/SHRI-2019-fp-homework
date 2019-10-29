@@ -35,51 +35,50 @@ const tetrahedronVolumeFormula = r => (Math.pow(r, 3) * Math.sqrt(2)) / 12;
 
 
 const shapeEqualsCube = compose(
-    () => {},
-    //
+    (shape) => shape === SHAPES.CUBE,
+    propShape
 );
 
 const shapeEqualsSphere = compose(
-    () => {},
-    //
+    (shape) => shape === SHAPES.SPHERE,
+    propShape
 );
 const shapeEqualsTetrahedron = compose(
-    () => {},
-    //
+    (shape) => shape === SHAPES.TETRAHEDRON,
+    propShape
 );
 
 const calcCubeVolume = compose(
-    () => {},
-    //
+    (size) => cubeVolumeFormula(size),
+    propSize
 );
 const calcSphereVolume = compose(
-    () => {},
-    //
+    (size) => sphereVolumeFormula(size),
+    propSize
 );
 const calcTetrahedronVolume = compose(
-    () => {},
-    //
+    (size) => tetrahedronVolumeFormula(size),
+    propSize
 );
 
 const calcVolume = cond([
-    [() => {}, () => {}],
-    [() => {}, () => {}]
-    //
+    [shapeEqualsCube, calcCubeVolume],
+    [shapeEqualsSphere, calcSphereVolume],
+    [shapeEqualsTetrahedron, calcTetrahedronVolume]
 ]);
 
 const calcMass = compose(
-    () => {},
-    //
+    ({ shape, size, density }) => massFormula({ volume: calcVolume({ shape, size }), density })
 );
 
 const calcVelocity = compose(
-    () => {},
-    //
+    (height) => velocityFormula(height),
+    propHeight
 );
 
 const computeMomentum = compose(
-    () => {},
-    //
+    round,
+    (args) => momentumFormula({ mass: calcMass(args), velocity: calcVelocity(args)})
 );
 
 
